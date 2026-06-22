@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
+
+const allArticles = await getCollection('articles');
+const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Artikel Terbaru">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="flex items-center gap-4 mb-10">
+      <h1 class="text-4xl font-display">Artikel & Berita</h1>
+      <div class="h-1 flex-grow bg-border rounded-full"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {sortedArticles.map(article => (
+        <Card 
+          type="article"
+          title={article.data.title}
+          href={`/articles/${article.id}`}
+          image={article.data.coverImage}
+          date={article.data.date}
+          author={article.data.author}
+        />
+      ))}
+    </div>
+    
+    {sortedArticles.length === 0 && (
+      <p class="text-center text-muted py-12">Belum ada artikel saat ini.</p>
+    )}
+  </div>
+</BaseLayout>

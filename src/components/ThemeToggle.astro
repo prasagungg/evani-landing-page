@@ -1,0 +1,55 @@
+---
+---
+<button id="themeToggle" class="p-2 rounded-md hover:bg-base transition-colors" aria-label="Toggle theme">
+  <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden text-yellow-500"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+  <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden text-blue-400"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+</button>
+
+<script>
+  const handleToggleClick = () => {
+    const element = document.documentElement;
+    const isDark = element.classList.contains("dark");
+    
+    if (isDark) {
+      element.classList.remove("dark");
+      element.classList.add("light");
+      localStorage.setItem("theme", "light");
+      updateIcons();
+    } else {
+      element.classList.remove("light");
+      element.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      updateIcons();
+    }
+  }
+
+  const updateIcons = () => {
+    // If not light, it's dark
+    const isDark = !document.documentElement.classList.contains("light");
+    
+    const sunIcon = document.getElementById("sunIcon");
+    const moonIcon = document.getElementById("moonIcon");
+    
+    if (sunIcon && moonIcon) {
+      if (isDark) {
+        sunIcon.classList.remove("hidden");
+        moonIcon.classList.add("hidden");
+      } else {
+        sunIcon.classList.add("hidden");
+        moonIcon.classList.remove("hidden");
+      }
+    }
+  }
+
+  // Set up the button
+  const toggleBtn = document.getElementById("themeToggle");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", handleToggleClick);
+  }
+
+  // Initial icon setup
+  updateIcons();
+
+  // Listen for view transitions if using Astro's ViewTransitions
+  document.addEventListener('astro:after-swap', updateIcons);
+</script>
