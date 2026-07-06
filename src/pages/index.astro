@@ -3,260 +3,205 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 ---
 
-<BaseLayout title="Beranda">
-  <section class="relative bg-base overflow-hidden py-20 lg:py-32 border-b border-border min-h-[80vh] flex items-center">
-    
-    <!-- Background Decor Container -->
-    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-      <!-- Definisi SVG Awan Jepang (Kumo) agar 100% transparan dan tajam -->
-      <svg width="0" height="0" class="absolute">
-        <defs>
-          <path id="kumo-path" d="M410.8 206.8c-1.8-19.1-17.8-33.8-37.2-33.8-2 0-4 .2-5.9.5C352.5 123.6 304.7 85 248.8 85c-42.3 0-79.3 22.8-100.2 57.1-4.8-1.5-9.8-2.3-14.9-2.3-25.1 0-46.1 18.5-49.8 42.6C44 191 14 227.4 14 271c0 51.3 41.6 93 93 93h288c57.4 0 104-46.6 104-104 0-51.1-36.9-93.5-88.2-103.2z"/>
-        </defs>
-      </svg>
-      <!-- Lapis Awan 1 -->
-      <div class="absolute top-[10%] w-[300%] flex justify-around opacity-20 dark:opacity-40 animate-clouds text-primary">
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-48 md:w-64 opacity-80"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-32 md:w-48 mt-16 opacity-60"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-56 md:w-72 -mt-10 opacity-90"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-40 md:w-56 mt-8 opacity-70"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-48 md:w-64 mt-2 opacity-50"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-32 md:w-48 -mt-12 opacity-80"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-56 md:w-72 mt-20 opacity-70"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-40 md:w-56 -mt-4 opacity-90"><use href="#kumo-path"/></svg>
-      </div>
+<BaseLayout title="Beranda" isHome={true}>
+  <!-- NEW HERO SECTION -->
+  <section class="relative bg-transparent overflow-hidden min-h-[90vh] flex items-center py-20">
 
-      <!-- Lapis Awan 2 (Lebih pelan & arah berlawanan) -->
-      <div class="absolute top-[40%] w-[250%] flex justify-around opacity-10 dark:opacity-20 animate-clouds-slow text-primary">
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-32 md:w-48 mt-4"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-56 md:w-72 -mt-12"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-40 md:w-56 mt-16"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-48 md:w-64 -mt-4"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-32 md:w-48 mt-10"><use href="#kumo-path"/></svg>
-        <svg viewBox="0 0 512 512" fill="currentColor" class="w-56 md:w-72 -mt-8"><use href="#kumo-path"/></svg>
-      </div>
-
-      <!-- Wave Merah Kiri Bawah (Pola Seigaiha) -->
-      <img 
-        src="/pattern.png" 
-        alt="" 
-        class="absolute bottom-0 left-0 -translate-x-[40%] translate-y-[40%] w-[400px] h-[400px] md:w-[700px] md:h-[700px] opacity-10 dark:opacity-30 pointer-events-none mix-blend-normal dark:mix-blend-screen grayscale dark:grayscale-0 animate-[spin_150s_linear_infinite_reverse]" 
-      />
-
-      <!-- 2. Vector Kiri (Pojok Bawah) -->
-      <img src="/vector-kiri.png" alt="" class="absolute bottom-0 left-0 w-64 md:w-96 object-contain translate-y-10 relative z-10" />
-
-      <!-- Wave Merah Kanan Atas (Pola Seigaiha) -->
-      <img 
-        src="/pattern.png" 
-        alt="" 
-        class="absolute top-0 right-0 translate-x-[40%] -translate-y-[40%] w-[400px] h-[400px] md:w-[700px] md:h-[700px] opacity-10 dark:opacity-30 pointer-events-none mix-blend-normal dark:mix-blend-screen grayscale dark:grayscale-0 animate-[spin_150s_linear_infinite]" 
-      />
-
-      <!-- 3. Vector Kanan (Pojok Bawah) -->
-      <img src="/vector-kanan.png" alt="" class="absolute bottom-0 right-0 w-64 md:w-96 object-contain translate-y-10 relative z-10" />
-    </div>
-
-    <div class="max-w-6xl mx-auto px-6 relative z-10 text-center flex flex-col items-center w-full">
-      <div class="inline-block px-3 py-1 mb-6 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-sm">
-        Komunitas NPC & Cosplayer
-      </div>
-      <h1 class="text-5xl md:text-7xl font-display text-content mb-6 tracking-tight">
-        Selamat Datang di <br/>
-        <span class="text-primary inline-block mt-2">Evani Community</span>
-      </h1>
-      <p class="text-lg text-muted max-w-2xl mb-10 font-body">
-        Wadah berkreasi yang mendukung talenta lokal dan merayakan budaya pop Jepang.
-        Bersama kita membangun komunitas yang inklusif, berani, dan energetik.
-      </p>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-12">
       
-      <div class="flex flex-wrap gap-4 justify-center">
-        <Button href="/events" variant="primary">Lihat Kegiatan Terdekat</Button>
-        <Button href="/articles" variant="outline">Baca Artikel</Button>
+      <!-- Left: Glassmorphism Card -->
+      <div class="w-full md:w-5/12 relative z-20">
+        <div class="backdrop-blur-xl bg-white/40 border border-white/60 p-8 md:p-10 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] relative">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-display text-content mb-2">
+            Evani <span class="text-primary">Community</span>
+          </h1>
+          <div class="text-primary font-bold tracking-widest text-xs md:text-sm uppercase mb-6 flex items-center gap-2">
+            <span class="w-8 h-0.5 bg-primary inline-block"></span> Komunitas NPC & Cosplayer
+          </div>
+          <p class="text-muted font-body mb-8 leading-relaxed">
+            Wadah berkreasi yang mendukung talenta lokal dan merayakan budaya pop Jepang.
+            Bersama kita membangun komunitas yang inklusif, berani, dan energetik.
+          </p>
+          <div class="flex gap-4">
+            <Button href="/events" variant="primary" class="!rounded-full px-8 py-3 shadow-lg shadow-primary/30">Join Sekarang</Button>
+          </div>
+          
+          <!-- Decorative Badge -->
+          <div class="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 w-20 h-20 md:w-24 md:h-24 bg-primary/90 backdrop-blur-md rounded-full flex flex-col items-center justify-center text-white font-display shadow-xl border-4 border-white/50">
+            <span class="text-sm md:text-base leading-none">Est.</span>
+            <span class="text-xl md:text-2xl leading-none">2024</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Right: Image / Characters -->
+      <div class="w-full md:w-7/12 relative z-10 flex justify-center md:justify-end mt-10 md:mt-0">
+         <img src="/hero.png" alt="Evani Hero" class="w-full h-auto max-w-2xl object-contain drop-shadow-2xl z-20" />
+      </div>
+      
     </div>
   </section>
 
   <!-- Activities Section -->
-  <section class="py-20 bg-surface relative overflow-hidden">
-    <!-- Decorative Pattern -->
-    <div class="absolute -right-32 -top-32 opacity-5 dark:opacity-15 pointer-events-none mix-blend-normal dark:mix-blend-screen grayscale dark:grayscale-0">
-      <img src="/pattern.png" alt="Pattern" class="w-96 h-96 animate-[spin_60s_linear_infinite]" />
-    </div>
-    <div class="absolute -left-32 -bottom-32 opacity-5 dark:opacity-15 pointer-events-none mix-blend-normal dark:mix-blend-screen grayscale dark:grayscale-0">
-      <img src="/pattern.png" alt="Pattern" class="w-96 h-96 animate-[spin_60s_linear_infinite_reverse]" />
-    </div>
-
+  <section class="py-20 bg-transparent relative overflow-hidden">
     <div class="max-w-6xl mx-auto px-6 relative z-10">
       <div class="flex items-center gap-4 mb-10">
-        <h2 class="text-3xl font-display">Ada apa di Evani?</h2>
-        <div class="h-1 flex-grow bg-border rounded-full"></div>
+        <h2 class="text-3xl font-display text-content">Ada apa di Evani?</h2>
+        <div class="h-1 flex-grow bg-primary/20 backdrop-blur-md border border-primary/30 rounded-full"></div>
       </div>
       
       <div class="flex flex-wrap justify-center gap-6">
         <!-- Card 1 -->
-        <a href="/roleplay" class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] group bg-base rounded border-l-4 border-transparent hover:border-primary p-6 transition-all shadow-sm hover:shadow-md flex flex-col items-center text-center">
-          <div class="w-32 h-32 mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform p-4">
-            <img src="/roleplay.jpg" alt="Role-Play" class="w-full h-full object-contain drop-shadow-md" />
+        <a href="/roleplay" class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] group backdrop-blur-2xl bg-white/20 rounded-3xl border border-white/70 hover:bg-white/40 hover:border-white p-6 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] hover:-translate-y-2 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-32 h-32 mb-6 bg-white/40 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 p-2 border border-white/80 shadow-inner relative z-10">
+            <img src="/roleplay.png" alt="Role-Play" class="w-full h-full object-cover rounded-full" />
           </div>
-          <h3 class="text-xl font-bold mb-2 font-display text-content">Role-Play</h3>
-          <p class="text-muted text-sm">"Hayuk Kita Role-Play!" Selami dunia imajinasi D&D dan berbagai RPG seru lainnya.</p>
+          <h3 class="text-xl font-bold mb-2 font-display text-content group-hover:text-primary transition-colors relative z-10">Role-Play</h3>
+          <p class="text-muted text-sm relative z-10">"Hayuk Kita Role-Play!" Selami dunia imajinasi D&D dan berbagai RPG seru lainnya.</p>
         </a>
 
         <!-- Card 2 -->
-        <a href="/game" class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] group bg-base rounded border-l-4 border-transparent hover:border-primary p-6 transition-all shadow-sm hover:shadow-md flex flex-col items-center text-center">
-          <div class="w-32 h-32 mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform p-4">
-            <img src="/game.jpg" alt="Nge-Game" class="w-full h-full object-contain drop-shadow-md" />
+        <a href="/game" class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] group backdrop-blur-2xl bg-white/20 rounded-3xl border border-white/70 hover:bg-white/40 hover:border-white p-6 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] hover:-translate-y-2 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-32 h-32 mb-6 bg-white/40 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 p-2 border border-white/80 shadow-inner relative z-10">
+            <img src="/game.png" alt="Nge-Game" class="w-full h-full object-cover rounded-full" />
           </div>
-          <h3 class="text-xl font-bold mb-2 font-display text-content">Gaming</h3>
-          <p class="text-muted text-sm">"Hayuk Kita Nge-Game!" Mabar game favoritmu bersama teman-teman sehobi.</p>
+          <h3 class="text-xl font-bold mb-2 font-display text-content group-hover:text-primary transition-colors relative z-10">Gaming</h3>
+          <p class="text-muted text-sm relative z-10">"Hayuk Kita Nge-Game!" Mabar game favoritmu bersama teman-teman sehobi.</p>
         </a>
 
         <!-- Card 3 -->
-        <a href="/futsal" class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] group bg-base rounded border-l-4 border-transparent hover:border-primary p-6 transition-all shadow-sm hover:shadow-md flex flex-col items-center text-center">
-          <div class="w-32 h-32 mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform p-4">
-            <img src="/futsal.jpg" alt="Futsal" class="w-full h-full object-contain drop-shadow-md" />
+        <a href="/futsal" class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] group backdrop-blur-2xl bg-white/20 rounded-3xl border border-white/70 hover:bg-white/40 hover:border-white p-6 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] hover:-translate-y-2 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-32 h-32 mb-6 bg-white/40 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 p-2 border border-white/80 shadow-inner relative z-10">
+            <img src="/futsal.png" alt="Futsal" class="w-full h-full object-cover rounded-full" />
           </div>
-          <h3 class="text-xl font-bold mb-2 font-display text-content">Futsal</h3>
-          <p class="text-muted text-sm">"Hayuk Kita Futsal!" Asah kelincahan dan kerja sama tim di lapangan futsal.</p>
+          <h3 class="text-xl font-bold mb-2 font-display text-content group-hover:text-primary transition-colors relative z-10">Futsal</h3>
+          <p class="text-muted text-sm relative z-10">"Hayuk Kita Futsal!" Asah kelincahan dan kerja sama tim di lapangan futsal.</p>
         </a>
 
         <!-- Card 4 -->
-        <a href="/badminton" class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] group bg-base rounded border-l-4 border-transparent hover:border-primary p-6 transition-all shadow-sm hover:shadow-md flex flex-col items-center text-center">
-          <div class="w-32 h-32 mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform p-4">
-            <img src="/badminton.jpg" alt="Badminton" class="w-full h-full object-contain drop-shadow-md" />
+        <a href="/badminton" class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] group backdrop-blur-2xl bg-white/20 rounded-3xl border border-white/70 hover:bg-white/40 hover:border-white p-6 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] hover:-translate-y-2 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-32 h-32 mb-6 bg-white/40 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 p-2 border border-white/80 shadow-inner relative z-10">
+            <img src="/badminton.png" alt="Badminton" class="w-full h-full object-cover rounded-full" />
           </div>
-          <h3 class="text-xl font-bold mb-2 font-display text-content">Badminton</h3>
-          <p class="text-muted text-sm">"Hayuk Kita Badminton!" Cari keringat sehat lewat olahraga bulu tangkis santai.</p>
+          <h3 class="text-xl font-bold mb-2 font-display text-content group-hover:text-primary transition-colors relative z-10">Badminton</h3>
+          <p class="text-muted text-sm relative z-10">"Hayuk Kita Badminton!" Cari keringat sehat lewat olahraga bulu tangkis santai.</p>
         </a>
 
         <!-- Card 5 -->
-        <a href="/boardgame" class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] group bg-base rounded border-l-4 border-transparent hover:border-primary p-6 transition-all shadow-sm hover:shadow-md flex flex-col items-center text-center">
-          <div class="w-32 h-32 mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform p-4">
-            <img src="/boardgame.jpg" alt="Main Boardgame" class="w-full h-full object-contain drop-shadow-md" />
+        <a href="/boardgame" class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] group backdrop-blur-2xl bg-white/20 rounded-3xl border border-white/70 hover:bg-white/40 hover:border-white p-6 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] hover:-translate-y-2 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-32 h-32 mb-6 bg-white/40 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 p-2 border border-white/80 shadow-inner relative z-10">
+            <img src="/boardgame.png" alt="Main Boardgame" class="w-full h-full object-cover rounded-full" />
           </div>
-          <h3 class="text-xl font-bold mb-2 font-display text-content">Board Game</h3>
-          <p class="text-muted text-sm">"Hayuk Kita Main!" Habiskan waktu seru dengan adu taktik di aneka permainan kartu dan board game.</p>
+          <h3 class="text-xl font-bold mb-2 font-display text-content group-hover:text-primary transition-colors relative z-10">Board Game</h3>
+          <p class="text-muted text-sm relative z-10">"Hayuk Kita Main!" Habiskan waktu seru dengan adu taktik di aneka permainan kartu dan board game.</p>
         </a>
       </div>
     </div>
   </section>
 
   <!-- Kegiatan Terbaru -->
-  <section class="py-20 bg-base relative overflow-hidden">
+  <section class="py-20 bg-transparent relative overflow-hidden">
     <div class="max-w-6xl mx-auto px-6 relative z-10">
       <div class="flex justify-between items-end mb-10">
         <div class="flex items-center gap-4 flex-grow">
-          <h2 class="text-3xl font-display">Kegiatan Terbaru</h2>
-          <div class="h-1 flex-grow bg-border rounded-full max-w-sm"></div>
+          <h2 class="text-3xl font-display text-content">Kegiatan Terbaru</h2>
+          <div class="h-1 flex-grow bg-primary/20 backdrop-blur-md border border-primary/30 rounded-full max-w-sm"></div>
         </div>
-        <a href="/events" class="text-primary hover:text-content transition-colors font-medium text-sm ml-4 hidden md:block">Lihat Semua &rarr;</a>
+        <a href="/events" class="text-primary hover:text-primary-hover transition-colors font-medium text-sm ml-4 hidden md:block">Lihat Semua &rarr;</a>
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Mock Event Card 1 -->
-        <a href="/events" class="group bg-surface rounded-lg border border-border overflow-hidden hover:border-primary transition-colors flex flex-col shadow-sm hover:shadow-md">
-          <div class="h-48 bg-primary/5 relative flex items-center justify-center p-4">
-            <div class="absolute top-4 left-4 bg-primary text-black px-3 py-1 rounded text-sm font-bold shadow-md z-10">24 Jun</div>
-            <img src="/roleplay.png" alt="D&D Night" class="h-full object-contain group-hover:scale-110 transition-transform" />
+        <a href="/events" class="group backdrop-blur-xl bg-white/40 rounded-2xl border border-white/60 overflow-hidden hover:bg-white/60 hover:border-primary hover:shadow-2xl transition-all flex flex-col shadow-xl">
+          <div class="h-56 bg-white/30 relative flex items-center justify-center border-b border-white/40">
+            <div class="absolute top-4 left-4 backdrop-blur-md bg-primary/90 text-white px-3 py-1.5 rounded-lg text-sm font-bold shadow-md z-10 border border-primary-hover">24 Jun</div>
+            <img src="/roleplay.png" alt="D&D Night" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" />
           </div>
-          <div class="p-6">
+          <div class="p-6 flex-grow flex flex-col">
             <span class="text-xs font-bold text-primary tracking-wider uppercase mb-2 block">Role-Play</span>
-            <h3 class="text-xl font-bold mb-2 font-display">D&D One-Shot: The Red Dragon</h3>
-            <p class="text-muted text-sm mb-4">Sesi singkat D&D untuk pemula. Bawa dadu kalian dan bersiap melawan naga merah legendaris!</p>
-            <span class="text-primary text-sm font-medium mt-auto inline-block">Baca Detail &rarr;</span>
+            <h3 class="text-xl font-bold mb-3 font-display group-hover:text-primary transition-colors">D&D One-Shot: The Red Dragon</h3>
+            <p class="text-muted text-sm mb-6 flex-grow">Sesi singkat D&D untuk pemula. Bawa dadu kalian dan bersiap melawan naga merah legendaris!</p>
+            <span class="text-primary text-sm font-medium inline-flex items-center gap-1 group-hover:translate-x-2 transition-transform">Baca Detail <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
           </div>
         </a>
         
         <!-- Mock Event Card 2 -->
-        <a href="/events" class="group bg-surface rounded-lg border border-border overflow-hidden hover:border-primary transition-colors flex flex-col shadow-sm hover:shadow-md">
-          <div class="h-48 bg-primary/5 relative flex items-center justify-center p-4">
-            <div class="absolute top-4 left-4 bg-primary text-black px-3 py-1 rounded text-sm font-bold shadow-md z-10">28 Jun</div>
-            <img src="/futsal.png" alt="Futsal Bareng" class="h-full object-contain group-hover:scale-110 transition-transform" />
+        <a href="/events" class="group backdrop-blur-xl bg-white/40 rounded-2xl border border-white/60 overflow-hidden hover:bg-white/60 hover:border-primary hover:shadow-2xl transition-all flex flex-col shadow-xl">
+          <div class="h-56 bg-white/30 relative flex items-center justify-center border-b border-white/40">
+            <div class="absolute top-4 left-4 backdrop-blur-md bg-primary/90 text-white px-3 py-1.5 rounded-lg text-sm font-bold shadow-md z-10 border border-primary-hover">28 Jun</div>
+            <img src="/futsal.png" alt="Futsal Bareng" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" />
           </div>
-          <div class="p-6">
+          <div class="p-6 flex-grow flex flex-col">
             <span class="text-xs font-bold text-primary tracking-wider uppercase mb-2 block">Futsal</span>
-            <h3 class="text-xl font-bold mb-2 font-display">Futsal Komunitas #12</h3>
-            <p class="text-muted text-sm mb-4">Mabar lapangan hijau rutin hari jumat. Patungan 20k per orang, wajib bawa sepatu karet.</p>
-            <span class="text-primary text-sm font-medium mt-auto inline-block">Baca Detail &rarr;</span>
+            <h3 class="text-xl font-bold mb-3 font-display group-hover:text-primary transition-colors">Futsal Komunitas #12</h3>
+            <p class="text-muted text-sm mb-6 flex-grow">Mabar lapangan hijau rutin hari jumat. Patungan 20k per orang, wajib bawa sepatu karet.</p>
+            <span class="text-primary text-sm font-medium inline-flex items-center gap-1 group-hover:translate-x-2 transition-transform">Baca Detail <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
           </div>
         </a>
         
         <!-- Mock Event Card 3 -->
-        <a href="/events" class="group bg-surface rounded-lg border border-border overflow-hidden hover:border-primary transition-colors flex flex-col shadow-sm hover:shadow-md">
-          <div class="h-48 bg-primary/5 relative flex items-center justify-center p-4">
-            <div class="absolute top-4 left-4 bg-primary text-black px-3 py-1 rounded text-sm font-bold shadow-md z-10">02 Jul</div>
-            <img src="/boardgame.png" alt="Boardgame" class="h-full object-contain group-hover:scale-110 transition-transform" />
+        <a href="/events" class="group backdrop-blur-xl bg-white/40 rounded-2xl border border-white/60 overflow-hidden hover:bg-white/60 hover:border-primary hover:shadow-2xl transition-all flex flex-col shadow-xl">
+          <div class="h-56 bg-white/30 relative flex items-center justify-center border-b border-white/40">
+            <div class="absolute top-4 left-4 backdrop-blur-md bg-primary/90 text-white px-3 py-1.5 rounded-lg text-sm font-bold shadow-md z-10 border border-primary-hover">02 Jul</div>
+            <img src="/boardgame.png" alt="Boardgame" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" />
           </div>
-          <div class="p-6">
+          <div class="p-6 flex-grow flex flex-col">
             <span class="text-xs font-bold text-primary tracking-wider uppercase mb-2 block">Board Game</span>
-            <h3 class="text-xl font-bold mb-2 font-display">Pesta Monopoli & Uno</h3>
-            <p class="text-muted text-sm mb-4">Kumpul santai sambil main Monopoli dan Uno. Yang kalah wajib traktir minuman!</p>
-            <span class="text-primary text-sm font-medium mt-auto inline-block">Baca Detail &rarr;</span>
+            <h3 class="text-xl font-bold mb-3 font-display group-hover:text-primary transition-colors">Pesta Monopoli & Uno</h3>
+            <p class="text-muted text-sm mb-6 flex-grow">Kumpul santai sambil main Monopoli dan Uno. Yang kalah wajib traktir minuman!</p>
+            <span class="text-primary text-sm font-medium inline-flex items-center gap-1 group-hover:translate-x-2 transition-transform">Baca Detail <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
           </div>
         </a>
       </div>
-      <a href="/events" class="text-primary font-medium text-sm mt-6 block text-center md:hidden">Lihat Semua Kegiatan &rarr;</a>
+      <a href="/events" class="text-primary font-medium text-sm mt-8 block text-center md:hidden">Lihat Semua Kegiatan &rarr;</a>
     </div>
   </section>
 
   <!-- Artikel Terbaru -->
-  <section class="py-20 bg-surface relative overflow-hidden">
+  <section class="py-20 bg-transparent relative overflow-hidden">
     <div class="max-w-6xl mx-auto px-6 relative z-10">
       <div class="flex justify-between items-end mb-10">
         <div class="flex items-center gap-4 flex-grow">
-          <h2 class="text-3xl font-display">Artikel Terbaru</h2>
-          <div class="h-1 flex-grow bg-border rounded-full max-w-sm"></div>
+          <h2 class="text-3xl font-display text-content">Artikel Terbaru</h2>
+          <div class="h-1 flex-grow bg-primary/20 backdrop-blur-md border border-primary/30 rounded-full max-w-sm"></div>
         </div>
-        <a href="/articles" class="text-primary hover:text-content transition-colors font-medium text-sm ml-4 hidden md:block">Lihat Semua &rarr;</a>
+        <a href="/articles" class="text-primary hover:text-primary-hover transition-colors font-medium text-sm ml-4 hidden md:block">Lihat Semua &rarr;</a>
       </div>
       
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Mock Article 1 -->
-        <a href="/articles" class="group flex flex-col sm:flex-row gap-6 bg-base p-6 rounded-lg border border-border hover:border-primary transition-all shadow-sm hover:shadow-md">
-          <div class="w-full sm:w-40 h-40 bg-primary/5 rounded-lg flex items-center justify-center flex-shrink-0 relative overflow-hidden p-4">
-            <img src="/game.png" alt="Tips Gaming" class="w-full h-full object-contain group-hover:scale-110 transition-transform drop-shadow-md" />
+        <a href="/articles" class="group flex flex-col sm:flex-row gap-6 backdrop-blur-xl bg-white/40 p-6 rounded-2xl border border-white/60 hover:bg-white/60 hover:border-primary transition-all shadow-xl hover:shadow-2xl">
+          <div class="w-full sm:w-48 h-48 sm:h-auto bg-white/30 rounded-xl overflow-hidden flex-shrink-0 relative border border-white/40">
+            <img src="/game.png" alt="Tips Gaming" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" />
           </div>
-          <div class="flex flex-col justify-center">
+          <div class="flex flex-col justify-center py-2">
             <span class="text-xs text-primary font-bold tracking-wider uppercase mb-2">Tutorial & Tips</span>
             <h3 class="text-xl font-bold mb-3 font-display group-hover:text-primary transition-colors line-clamp-2">Tips Push Rank Mobile Legends Cepat ke Mythic</h3>
-            <p class="text-muted text-sm line-clamp-2">Bosan stuck di Epic atau Legend? Coba terapkan tips drafting dan rotasi berikut ini agar cepat sampai ke Mythic.</p>
+            <p class="text-muted text-sm line-clamp-3 mb-4">Bosan stuck di Epic atau Legend? Coba terapkan tips drafting dan rotasi berikut ini agar cepat sampai ke Mythic.</p>
+            <span class="text-primary text-sm font-medium mt-auto inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Baca <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span>
           </div>
         </a>
         
         <!-- Mock Article 2 -->
-        <a href="/articles" class="group flex flex-col sm:flex-row gap-6 bg-base p-6 rounded-lg border border-border hover:border-primary transition-all shadow-sm hover:shadow-md">
-          <div class="w-full sm:w-40 h-40 bg-primary/5 rounded-lg flex items-center justify-center flex-shrink-0 relative overflow-hidden p-4">
-            <img src="/badminton.png" alt="Tips Badminton" class="w-full h-full object-contain group-hover:scale-110 transition-transform drop-shadow-md" />
+        <a href="/articles" class="group flex flex-col sm:flex-row gap-6 backdrop-blur-xl bg-white/40 p-6 rounded-2xl border border-white/60 hover:bg-white/60 hover:border-primary transition-all shadow-xl hover:shadow-2xl">
+          <div class="w-full sm:w-48 h-48 sm:h-auto bg-white/30 rounded-xl overflow-hidden flex-shrink-0 relative border border-white/40">
+            <img src="/badminton.png" alt="Tips Badminton" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" />
           </div>
-          <div class="flex flex-col justify-center">
+          <div class="flex flex-col justify-center py-2">
             <span class="text-xs text-primary font-bold tracking-wider uppercase mb-2">Gaya Hidup</span>
             <h3 class="text-xl font-bold mb-3 font-display group-hover:text-primary transition-colors line-clamp-2">Cara Memilih Raket Badminton untuk Pemula</h3>
-            <p class="text-muted text-sm line-clamp-2">Bingung memilih raket yang pas? Jangan sampai salah beli. Pahami perbedaan berat dan tarikan senar raket yang cocok untukmu.</p>
+            <p class="text-muted text-sm line-clamp-3 mb-4">Bingung memilih raket yang pas? Jangan sampai salah beli. Pahami perbedaan berat dan tarikan senar raket yang cocok untukmu.</p>
+            <span class="text-primary text-sm font-medium mt-auto inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Baca <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span>
           </div>
         </a>
       </div>
-      <a href="/articles" class="text-primary font-medium text-sm mt-6 block text-center md:hidden">Lihat Semua Artikel &rarr;</a>
+      <a href="/articles" class="text-primary font-medium text-sm mt-8 block text-center md:hidden">Lihat Semua Artikel &rarr;</a>
     </div>
   </section>
 </BaseLayout>
 
-<style>
-  /* Animasi awan gerak kiri ke kanan bolak-balik */
-  .animate-clouds {
-    animation: moveClouds 35s ease-in-out infinite alternate;
-  }
-
-  .animate-clouds-slow {
-    animation: moveClouds 50s ease-in-out infinite alternate-reverse;
-  }
-
-  @keyframes moveClouds {
-    0% {
-      transform: translateX(-20%);
-    }
-    100% {
-      transform: translateX(10%);
-    }
-  }
-</style>

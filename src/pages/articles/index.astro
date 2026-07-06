@@ -8,10 +8,10 @@ const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data
 ---
 
 <BaseLayout title="Artikel Terbaru">
-  <div class="max-w-6xl mx-auto px-6 py-12">
+  <div class="max-w-6xl mx-auto px-6 py-12 relative z-10">
     <div class="flex items-center gap-4 mb-10">
-      <h1 class="text-4xl font-display">Artikel & Berita</h1>
-      <div class="h-1 flex-grow bg-border rounded-full"></div>
+      <h1 class="text-4xl font-display text-content">Artikel & Berita</h1>
+      <div class="h-1 flex-grow bg-primary/20 backdrop-blur-md border border-primary/30 rounded-full"></div>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

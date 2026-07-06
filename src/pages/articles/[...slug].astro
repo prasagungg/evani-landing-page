@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 export async function getStaticPaths() {
   const articleEntries = await getCollection('articles');
@@ -20,7 +21,9 @@ const formattedDate = new Intl.DateTimeFormat('id-ID', {
 ---
 
 <BaseLayout title={entry.data.title}>
-  <div class="max-w-3xl mx-auto px-6 py-12">
+  <div class="max-w-3xl mx-auto px-6 py-20 relative z-10 w-full">
+    <div class="backdrop-blur-2xl bg-white/60 border border-white/60 rounded-[3rem] p-10 md:p-16 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] relative">
+    <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: 'Artikel', href: '/articles' }, { label: entry.data.title }]} class="mb-10 justify-center" />
     <div class="mb-10 text-center">
       <div class="flex justify-center items-center gap-4 text-sm text-muted mb-4">
         <span class="flex items-center gap-2">
@@ -34,7 +37,7 @@ const formattedDate = new Intl.DateTimeFormat('id-ID', {
         </span>
       </div>
 
-      <h1 class="text-4xl md:text-5xl font-display mb-8">{entry.data.title}</h1>
+      <h1 class="text-4xl md:text-5xl font-display mb-8 text-content">{entry.data.title}</h1>
       
       {entry.data.coverImage && (
         <img 
@@ -47,6 +50,8 @@ const formattedDate = new Intl.DateTimeFormat('id-ID', {
 
     <div class="prose prose-lg dark:prose-invert prose-headings:font-display prose-a:text-primary hover:prose-a:text-primary-hover max-w-none prose-blockquote:border-l-primary prose-headings:text-content prose-p:text-muted">
       <Content />
+    </div>
+    </div>
     </div>
   </div>
 </BaseLayout>

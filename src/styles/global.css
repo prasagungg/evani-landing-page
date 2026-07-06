@@ -17,15 +17,6 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
-    --bg-main: #121212;
-    --bg-surface: #1E1E1E;
-    --text-main: #FFFFFF;
-    --text-muted: #A0A0A0;
-    --border-color: #374151;
-  }
-
-  html.light {
     color-scheme: light;
     --bg-main: #f9fafb;
     --bg-surface: #ffffff;

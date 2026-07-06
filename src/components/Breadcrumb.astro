@@ -1,0 +1,29 @@
+---
+interface Props {
+  items: {
+    label: string;
+    href?: string;
+  }[];
+  class?: string;
+}
+
+const { items, class: className = '' } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class={`flex ${className}`}>
+  <ol class="flex flex-wrap items-center space-x-2 text-sm text-muted font-medium bg-white/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/50 shadow-sm inline-flex">
+    {items.map((item, index) => (
+      <li class="flex items-center">
+        {item.href ? (
+          <a href={item.href} class="hover:text-primary transition-colors">{item.label}</a>
+        ) : (
+          <span class="text-content font-bold">{item.label}</span>
+        )}
+        
+        {index < items.length - 1 && (
+          <svg class="w-4 h-4 mx-1.5 text-muted/50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
