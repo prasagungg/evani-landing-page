@@ -1,11 +1,18 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import Card from '../components/Card.astro';
+
+const allEvents = await getCollection('events');
+const futsalEvents = allEvents
+  .filter(event => event.data.tags.includes('Main Bola'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout title="Futsal | Evani Community">
-  <section class="py-20 lg:py-32 bg-transparent relative overflow-hidden min-h-[70vh] flex items-center">
+  <section class="pt-20 pb-12 lg:pt-32 lg:pb-16 bg-transparent relative overflow-hidden flex items-center">
     <div class="max-w-4xl mx-auto px-6 relative z-10 text-center w-full">
       <div class="backdrop-blur-2xl bg-white/40 border border-white/60 rounded-[3rem] p-10 md:p-16 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] relative">
         <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: 'Kegiatan', href: '/events' }, { label: 'Main Bola' }]} class="mb-8 justify-center" />
@@ -14,10 +21,75 @@ import Breadcrumb from '../components/Breadcrumb.astro';
         </div>
         <h1 class="text-4xl md:text-6xl font-display mb-6 text-content">Hayuk Kita Main Bola!</h1>
         <p class="text-lg text-muted mb-10 font-body">Tinggalkan sejenak layar monitormu dan asah kelincahan di lapangan hijau. Entah itu sekadar Futsal santai atau seru-seruan di lapangan Minisoccer, main bola bareng komunitas bukan cuma soal menang, tapi kebersamaan dan cari keringat sehat!</p>
-        <div class="flex gap-4 justify-center">
-          <Button href="/events" variant="primary" class="!rounded-full px-10 py-4 shadow-lg shadow-primary/20 text-lg transition-transform hover:-translate-y-1">Lihat Jadwal Main</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-5xl font-display text-content mb-4">Pilih Lapanganmu</h2>
+        <p class="text-lg text-muted font-body max-w-2xl mx-auto">Kami rutin mengadakan jadwal main untuk dua tipe lapangan ini.</p>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-8 justify-center">
+        <!-- Card Futsal -->
+        <div class="flex-1 backdrop-blur-xl bg-white/40 rounded-3xl border border-white/60 p-8 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] hover:shadow-[0_16px_48px_0_rgba(0,0,0,0.1)] transition-all hover:-translate-y-2 relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-20 h-20 mb-6 bg-white/50 rounded-2xl flex items-center justify-center p-4 border border-white/80 shadow-inner group-hover:scale-110 transition-transform duration-300 relative z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 12m-3 0a3 3 0 1 0 6 0 3 3 0 1 0 -6 0"/><path d="M12 9l3.5 -5.5"/><path d="M12 15l-3.5 5.5"/><path d="M9.5 10.5l-6 2"/><path d="M14.5 10.5l6 2"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold font-display text-content mb-3 relative z-10">Futsal</h3>
+          <p class="text-muted font-body leading-relaxed mb-6 relative z-10">Bermain di lapangan *indoor* yang intens, adu taktik lincah, dan pergerakan cepat dengan jumlah pemain lebih sedikit.</p>
+          <ul class="space-y-2 mb-8 relative z-10">
+            <li class="flex items-center gap-2 text-sm text-content"><span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span> 5 vs 5 Pemain</li>
+            <li class="flex items-center gap-2 text-sm text-content"><span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span> Lapangan Indoor/Interlock</li>
+            <li class="flex items-center gap-2 text-sm text-content"><span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span> Ritme Permainan Cepat</li>
+          </ul>
+        </div>
+
+        <!-- Card Minisoccer -->
+        <div class="flex-1 backdrop-blur-xl bg-white/40 rounded-3xl border border-white/60 p-8 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] hover:shadow-[0_16px_48px_0_rgba(0,0,0,0.1)] transition-all hover:-translate-y-2 relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-20 h-20 mb-6 bg-white/50 rounded-2xl flex items-center justify-center p-4 border border-white/80 shadow-inner group-hover:scale-110 transition-transform duration-300 relative z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21v-4a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v4"/><path d="M9 21v-4"/><path d="M15 21v-4"/><path d="M3 3h18"/><path d="M5 3v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-4"/><path d="M9 3v4"/><path d="M15 3v4"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold font-display text-content mb-3 relative z-10">Minisoccer</h3>
+          <p class="text-muted font-body leading-relaxed mb-6 relative z-10">Sensasi sepak bola lapangan rumput asli (*outdoor* atau *semi-indoor*) dengan area yang jauh lebih luas.</p>
+          <ul class="space-y-2 mb-8 relative z-10">
+            <li class="flex items-center gap-2 text-sm text-content"><span class="w-1.5 h-1.5 rounded-full bg-green-500/50"></span> 7 vs 7 Pemain</li>
+            <li class="flex items-center gap-2 text-sm text-content"><span class="w-1.5 h-1.5 rounded-full bg-green-500/50"></span> Lapangan Rumput Sintetis</li>
+            <li class="flex items-center gap-2 text-sm text-content"><span class="w-1.5 h-1.5 rounded-full bg-green-500/50"></span> Lebih Mengandalkan Fisik/Lari</li>
+          </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="py-16 relative overflow-hidden bg-white/30 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-5xl font-display text-content mb-4">Riwayat & Jadwal Main</h2>
+        <p class="text-lg text-muted font-body max-w-2xl mx-auto">Keseruan kegiatan Main Bola Evani Community yang lalu maupun yang akan datang.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {futsalEvents.map(event => (
+          <Card 
+            type="event"
+            title={event.data.title}
+            href={`/events/${event.id}`}
+            image={event.data.coverImage}
+            date={event.data.date}
+            location={event.data.location}
+            tags={event.data.tags}
+          />
+        ))}
+      </div>
+      
+      {futsalEvents.length === 0 && (
+        <p class="text-center text-muted py-12">Belum ada kegiatan Main Bola saat ini.</p>
+      )}
     </div>
   </section>
 </BaseLayout>

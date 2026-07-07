@@ -1,7 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import Card from '../components/Card.astro';
+
+const allEvents = await getCollection('events');
+const roleplayEvents = allEvents
+  .filter(event => event.data.tags.includes('Roleplay'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const maps = [
   "Festival Grounds", "Market Square", "Main Stage", "Forest Edge", 
@@ -130,6 +137,33 @@ const achievements = [
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="py-16 relative overflow-hidden bg-white/30 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-5xl font-display text-content mb-4">Riwayat & Jadwal Roleplay</h2>
+        <p class="text-lg text-muted font-body max-w-2xl mx-auto">Beragam petualangan seru yang pernah dan akan dimainkan bersama komunitas.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {roleplayEvents.map(event => (
+          <Card 
+            type="event"
+            title={event.data.title}
+            href={`/events/${event.id}`}
+            image={event.data.coverImage}
+            date={event.data.date}
+            location={event.data.location}
+            tags={event.data.tags}
+          />
+        ))}
+      </div>
+      
+      {roleplayEvents.length === 0 && (
+        <p class="text-center text-muted py-12">Belum ada kegiatan Roleplay saat ini.</p>
+      )}
     </div>
   </section>
 </BaseLayout>
