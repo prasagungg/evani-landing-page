@@ -4,6 +4,7 @@ date: 2026-05-27
 location: "Kedai Jun"
 coverImage: "/events/dnd-festival-malam/thumnail.png"
 tags: ["Roleplay", "DND", "One Shot"]
+isUpcoming: false
 ---
 
 Sesi _One Shot_ Dungeons & Dragons kali ini super seru! Evani Community mengadakan permainan dengan tema misteri "Tragedi Festival Malam" yang sukses membuat para _player_ panik sekaligus tertawa.
