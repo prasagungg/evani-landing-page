@@ -2,10 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+
+const maps = [
+  "Festival Grounds", "Market Square", "Main Stage", "Forest Edge", 
+  "Old Fountain", "Hidden Tunnel", "Mysterious Altar", "Secret Catacombs"
+];
+
+const endings = [
+  "Good Ending", "Troll Ending", "Fail Ending", "Bad Ending", "Open Ending", "Secret Ending"
+];
+
+const achievements = [
+  "Time Looping", "Kami-sama", "Festival Grounds Expert", "Market Square Expert",
+  "Main Stage Expert", "Forest Edge Expert", "Old Fountain Expert",
+  "Hidden Tunnel Expert", "Mysterious Altar Expert", "Secret Catacombs Expert",
+  "Tangan Iblis", "Si Paling Teknisi", "Zoro", "Sahabat Karib", "Reptil Darat", "Mimic"
+];
 ---
 
 <BaseLayout title="Role-Play | Evani Community">
-  <section class="py-20 lg:py-32 bg-transparent relative overflow-hidden min-h-[70vh] flex items-center">
+  <section class="pt-20 pb-10 lg:pt-32 lg:pb-16 bg-transparent relative overflow-hidden flex items-center">
     <div class="max-w-4xl mx-auto px-6 relative z-10 text-center w-full">
       <div class="backdrop-blur-2xl bg-white/40 border border-white/60 rounded-[3rem] p-10 md:p-16 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] relative">
         <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: 'Kegiatan', href: '/events' }, { label: 'Role-Play' }]} class="mb-8 justify-center" />
@@ -14,10 +30,122 @@ import Breadcrumb from '../components/Breadcrumb.astro';
         </div>
         <h1 class="text-4xl md:text-6xl font-display mb-6 text-content">Hayuk Kita Role-Play!</h1>
         <p class="text-lg text-muted mb-10 font-body">Selami dunia imajinasi tanpa batas. Mari bertualang bersama di ranah Dungeons & Dragons dan aneka Tabletop RPG seru lainnya. Siapkan dadumu, tentukan nasib karaktermu, dan mari buat cerita legendaris bersama!</p>
-        <div class="flex gap-4 justify-center">
-          <Button href="/events" variant="primary" class="!rounded-full px-10 py-4 shadow-lg shadow-primary/20 text-lg transition-transform hover:-translate-y-1">Lihat Jadwal Main</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-5xl font-display text-content mb-4">Daftar Campaign</h2>
+        <p class="text-lg text-muted font-body max-w-2xl mx-auto">Koleksi petualangan seru yang bisa kamu mainkan bersama Evani Community!</p>
+      </div>
+
+      <div class="backdrop-blur-2xl bg-white/40 border border-white/60 rounded-[3rem] p-8 md:p-12 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] relative overflow-hidden">
+        
+        <div class="flex flex-col lg:flex-row gap-12">
+          <!-- Campaign Details -->
+          <div class="lg:w-2/3">
+            <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4 border border-primary/20">ONE SHOT DND CAMPAIGN</span>
+            <h3 class="text-3xl md:text-4xl font-display text-content mb-4 leading-tight">Tragedi Festival Malam yang Tidak Pernah Selesai</h3>
+            
+            <div class="flex flex-wrap gap-4 mb-8">
+              <div class="flex items-center gap-2 text-sm text-content/80 bg-white/50 px-3 py-1.5 rounded-xl border border-white/60 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
+                1 Malam (1-2 Jam)
+              </div>
+              <div class="flex items-center gap-2 text-sm text-content/80 bg-white/50 px-3 py-1.5 rounded-xl border border-white/60 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                4 Player + 1 NPC
+              </div>
+              <div class="flex items-center gap-2 text-sm text-content/80 bg-white/50 px-3 py-1.5 rounded-xl border border-white/60 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M11.3 1.046A120.1 120.1 0 0010 1C5.584 1 1.731 2.21 1 3.5v13C1 17.79 5.584 19 10 19s9-1.21 9-2.5v-13c-.731-1.29-4.584-2.5-9-2.5zM10 17c-4.416 0-8-1.119-8-2.5V5.5C2 6.881 5.584 8 10 8s8-1.119 8-2.5v9c0 1.381-3.584 2.5-8 2.5z" clip-rule="evenodd" />
+                </svg>
+                Comedy-chaos, Misteri, Tegang
+              </div>
+            </div>
+
+            <div class="space-y-4 text-muted font-body leading-relaxed">
+              <p>Festival malam terbesar di kota Lunaria seharusnya hanya berlangsung satu malam. Penuh makanan, permainan, lampion, dan hadiah, semuanya terlihat seperti malam yang sempurna.</p>
+              <p class="font-medium text-content">Namun ketika jam menunjukkan pukul 12 malam, sesuatu yang aneh terjadi. Festival kembali ke awal.</p>
+              <p>Waktu berulang. Orang-orang tidak menyadarinya. Hanya beberapa petualang yang sadar bahwa mereka terjebak di malam yang sama terus-menerus. Bersama seorang kurir panik bernama Maki, para petualang harus mencari tahu penyebab festival yang tidak pernah selesai ini.</p>
+              <p>Di balik suasana lucu, wahana rusak, dan kekacauan festival, ada rahasia besar, artefak misterius, dan seseorang yang terlalu takut untuk melepaskan malam paling bahagia dalam hidupnya.</p>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-content/10">
+              <h4 class="text-xl font-display text-content mb-4">Maps</h4>
+              <div class="flex flex-wrap gap-2">
+                {maps.map(map => (
+                  <span class="px-3 py-1 bg-white/60 text-content/70 rounded-lg text-sm shadow-sm border border-white/80">{map}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar Information -->
+          <div class="lg:w-1/3 space-y-6">
+            <div class="bg-white/50 rounded-3xl p-6 border border-white/80 shadow-sm">
+              <h4 class="text-lg font-display text-content mb-3 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M11.3 1.046A120.1 120.1 0 0010 1C5.584 1 1.731 2.21 1 3.5v13C1 17.79 5.584 19 10 19s9-1.21 9-2.5v-13c-.731-1.29-4.584-2.5-9-2.5zm3.296 4.71a1 1 0 00-1.192-1.512L10 5.61l-3.404-1.366a1 1 0 00-1.192 1.512L8.71 7.21l-3.306 1.763a1 1 0 00.992 1.764L9.71 8.97l.29.145V14a1 1 0 102 0V9.115l.29-.145 3.314-1.767a1 1 0 00.992-1.764L13.29 7.21l3.306-1.454z" clip-rule="evenodd" />
+                </svg>
+                Endings
+              </h4>
+              <ul class="grid grid-cols-2 gap-2">
+                {endings.map(ending => (
+                  <li class="flex items-center gap-2 text-sm text-muted">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                    {ending}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="bg-white/50 rounded-3xl p-6 border border-white/80 shadow-sm">
+              <h4 class="text-lg font-display text-content mb-3 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 2a1 1 0 01.832.445l3.22 4.83 5.58.552a1 1 0 01.564 1.73l-4.184 3.792 1.222 5.485a1 1 0 01-1.488 1.082L10 16.892l-4.746 2.824a1 1 0 01-1.488-1.082l1.222-5.485-4.184-3.792a1 1 0 01.564-1.73l5.58-.552 3.22-4.83A1 1 0 0110 2z" clip-rule="evenodd" />
+                </svg>
+                Achievements
+              </h4>
+              <div class="flex flex-wrap gap-1.5 max-h-48 overflow-y-auto pr-2 custom-scrollbar">
+                {achievements.map(achv => (
+                  <span class="text-xs px-2.5 py-1 bg-yellow-100/50 text-yellow-800 border border-yellow-200/50 rounded-md">
+                    {achv}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <Button href="https://docs.google.com/document/d/1aBoXpilc4DUwf_j5LAs_2Kfx1ZERsMmE/edit" target="_blank" variant="primary" class="w-full justify-center !rounded-2xl shadow-lg shadow-primary/20 hover:-translate-y-1 transition-transform">
+                Lihat Character Sheet
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(var(--color-primary), 0.2);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--color-primary), 0.4);
+  }
+</style>
