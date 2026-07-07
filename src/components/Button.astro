@@ -1,12 +1,16 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+
 interface Props {
   href?: string;
   variant?: 'primary' | 'outline';
   class?: string;
   type?: 'button' | 'submit' | 'reset';
+  target?: string;
+  [key: string]: any;
 }
 
-const { href, variant = 'primary', class: className = '', type = 'button' } = Astro.props;
+const { href, variant = 'primary', class: className = '', type = 'button', target, ...rest } = Astro.props;
 
 // Primary: Background #BA121A, teks #FFFFFF (Poppins, Bold), bentuk slightly rounded. Hover: lebih terang
 // Outline: Transparent background, border 2px solid #BA121A, teks #BA121A
@@ -22,11 +26,11 @@ const classes = `${baseStyles} ${variants[variant]} ${className}`;
 
 {
   href ? (
-    <a href={href} class={classes}>
+    <a href={href} class={classes} target={target} {...rest}>
       <slot />
     </a>
   ) : (
-    <button type={type} class={classes}>
+    <button type={type} class={classes} {...rest}>
       <slot />
     </button>
   )
